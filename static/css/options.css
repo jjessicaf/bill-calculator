@@ -1,0 +1,125 @@
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #2d2f31;
+}
+
+body {
+    background: linear-gradient(to bottom, #324152, #54616e);
+    font-family: Arial, sans-serif;
+    color: #2d2f31;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+    min-height: 100%;
+}
+
+@media (max-width: 700px) {
+  #main {
+      width: 100%;
+      transition: width 1.5s ease;
+  }
+}
+@media (min-width: 701px) {
+  #main {
+      width: 700px;
+      transition: width 1.5s ease;
+  }
+}
+
+h1 {
+    color: #1c5b9a;
+}
+
+#main {
+    border: 3px solid #dee0e1;
+    background-color: #dee0e1;
+    border-radius: .5em;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#content {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.container {
+    margin-top: 3%;
+    margin-bottom: 7%;
+}
+
+.box {
+    border: 2px solid #f5f6f8;
+    background-color: #f5f6f8;
+    border-radius: .5em;
+    padding: 10px;
+    display: block;
+    margin-bottom: 2px;
+}
+.box.item {
+    margin-bottom: 3px;
+}
+.box.item:hover {
+    border: 2px solid #3b6eab;
+}
+.box.item > input {
+    font-size: 15px;
+    color: #41474f;
+    border-radius: .2em;
+    border: 1px solid #3b6eab;
+}
+
+.name {
+    text-align: center;
+    border: 2px solid #1c5b9a;
+    background-color: #1c5b9a;
+    color: #eceff3;
+}
+.name:hover {
+    border: 2px solid #206ab4;
+    background-color: #206ab4;
+}
+
+.item {
+  color: #212121;
+}
+
+.active.name{
+    background-color: #0b3660;
+    border-color: #0b3660;
+}
+.active.name:hover {
+    border: 4px solid #0e3e6e;
+    background-color: #0e3e6e;
+}
+.active.item{
+    border: 3px solid #0b3660;
+}
+.active.item:hover {
+    background-color: #d2d4d5;
+    border: 3px solid #124d88;
+}
+
+.submit_container {
+    padding-bottom: 2%;
+}
+.submit {
+    margin-top: 10px;
+    background-color: #ef850a;
+    border: 3px solid #ef850a;
+    padding: 8px 12px;
+    border-radius: .4em;
+    color: #eceff3;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+.submit:hover {
+    background-color: #e37200;
+    border: 3px solid #e37200;
+}

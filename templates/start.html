@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bill Calculator</title>
+        <script src="{{url_for('static', filename='js/start.js')}}"></script>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/start.css') }}">
+        <style>
+            #to_display {
+                display: {{default_display}};
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="content">
+                <h1>{{ message }}</h1>
+                <form action="/submit_data" enctype="multipart/form-data" method="POST">
+                    <div id="choose_num_ppl">
+                        <p>number of people</p>
+                        <select id="num_people" name="num_people" class="{% if nums_error: %}error{% endif %}" onclick="removeError(this)" onchange="showDiv('to_display', this)">
+                        {% for i in nums %}
+                            {% if i == last: %}
+                                <OPTION value='{{i}}' selected>{{i}}</option>
+                            {% else: %}
+                                <OPTION value='{{i}}'>{{i}}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div id="to_display" data-last="{{last}}">
+                        <p>names (optional)</p>
+                        <div id="container"></div>
+                    </div>
+                    <div id="img_upload">
+                        <p>choose bill</p>
+                        <label id="bill_label" for="billImg" class="file_upload {% if img_error: %}error{% endif %}" onclick="removeError(this)">
+                        <p id="label_text">upload image</p>
+                        </label>
+                        <input type="file" id="billImg" name="bill_img" accept="image/png, image/jpeg" onchange="billReceived()">
+                    </div>
+                    <div>
+                        <p>tip percent</p>
+                        <input id='tip' type="number" name="tip" placeholder="{{tip}}" min="0" max="100" value="{{tip}}" onchange="" onclick="this.select(); removeError(this)" >%
+                    </div>
+                    <div>
+                        <input class="submit" type="submit" value="enter">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

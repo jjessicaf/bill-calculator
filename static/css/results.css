@@ -1,0 +1,218 @@
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #2d2f31;
+}
+
+body {
+    background: linear-gradient(to bottom, #324152, #54616e);
+    font-family: Arial, sans-serif;
+    color: #2d2f31;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+    min-height: 100%;
+}
+
+@media (max-width: 500px) {
+    .flex_child_container > div {
+        width: 100%;
+    }
+    .button_container form,
+    .button_container > button {
+        width: 100%;
+    }
+}
+@media (max-width: 700px) and (min-width: 501px) {
+    #main {
+      width: 100%;
+      transition: width 1.5s ease;
+    }
+    .flex_child_container {
+        flex-direction: column;
+    }
+    .button_container form,
+    .button_container > button {
+        width: calc(50% - 10px);
+    }
+}
+@media (min-width: 501px) {
+    #main {
+      width: 700px;
+      transition: width 1.5s ease;
+    }
+    .flex_child_container {
+        flex-direction: column;
+    }
+    .flex_child_container > div {
+        width: 250px;
+    }
+    .button_container form,
+    .button_container > button {
+        width: calc(50% - 10px);
+    }
+}
+
+.flex_container {
+    justify-content: center;
+    display: flex;
+}
+.flex_child_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex_child_container > div {
+    cursor: default;
+    display: block;
+    text-align: left;
+    background-color: #F5F6F8FF;
+    padding-left: 18px;
+    padding-right: 12px;
+    padding-bottom: 2px;
+    border-radius: .4em;
+    margin: 10px;
+}
+.flex_child_container > div:hover {
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out;
+}
+
+#main {
+    border: 3px solid #dee0e1;
+    background-color: #dee0e1;
+    border-radius: .5em;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#content {
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+}
+
+h1 {
+    color: #1c5b9a;
+    text-align: center;
+}
+
+span {
+    color: #EF850AFF;
+}
+
+.name {
+    margin-bottom: 5px;
+    color: #0c3a69;
+}
+
+.items {
+    margin-top: -1px;
+}
+
+.clickable {
+    position: relative;
+    display: inline-block;
+}
+.clickable .tooltiptext {
+    font-size: 15px;
+    visibility: hidden;
+    width: 140px;
+    background-color: #2d2f31;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 105%;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.clickable .tooltiptext::after { /* the arrow under the tooltip */
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #4b4f52 transparent transparent transparent;
+}
+.clickable:hover .tooltiptext {
+    left: 20%;
+    visibility: visible;
+    opacity: .8;
+}
+
+.button_container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.button_container input.button {
+    flex-grow: 1;
+}
+.button_container form,
+.button_container > div {
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+.button {
+    margin-bottom: 6px;
+    min-width: 200px;
+    background-color: #ef850a;
+    border: 3px solid #ef850a;
+    padding: 8px 12px;
+    border-radius: .4em;
+    color: #eceff3;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    z-index: 2;
+}
+.button:hover {
+    background-color: #e37200;
+    border: 3px solid #e37200;
+}
+
+#share.ripple_action {
+    padding: 11px 15px;
+    border: none;
+}
+
+.ripple_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.ripple {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 186, 214, 0.74);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleEffect 1s;
+}
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}

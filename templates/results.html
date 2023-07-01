@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bill</title>
+    <script src="{{url_for('static', filename='js/results.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/results.css') }}">
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+            <h1>{{ message }}</h1>
+            <div class="flex_container">
+                <div class="flex_child_container">
+                {% for person, total in totals.items() %}
+                    <div class="clickable" onclick="selectText(this)" onmouseleave="resetTooltip(this)">
+                        <span class="tooltiptext">copy total</span>
+                        <h3 class="name">{{person}}: <span>${{total}}</span></h3>
+                        <ul class ="items">
+                            {% for item in assignment[person] %}
+                                <li>{{item[0]}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div id="removable" class="button_container">
+                <button id="share" class="button" onclick="copyPage()">
+                    <span class="btn_background"></span>share
+                </button>
+                <form action="/recalculate" method="POST">
+                    <input class="button" type="submit" value="re-calculate">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
