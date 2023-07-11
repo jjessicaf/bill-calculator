@@ -11,6 +11,7 @@ import app_ocr
 from uvicorn.workers import UvicornWorker
 
 
+# web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app --log-file=-
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app_name = "Bill Calculator"
