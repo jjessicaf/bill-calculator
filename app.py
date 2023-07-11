@@ -8,6 +8,7 @@ from collections import OrderedDict
 import re
 import db_actions
 import app_ocr
+from uvicorn.workers import UvicornWorker
 
 
 UPLOAD_FOLDER = os.path.join('static', 'uploads')
