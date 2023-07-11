@@ -12,7 +12,7 @@ def img_to_text(img_path):
     :return: text from image
     """
 
-    pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'
+    pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract' #'/opt/homebrew/bin/tesseract'
 
     img_data = db_actions.get_image(img_path)
     print("type:", type(img_data[0]))
