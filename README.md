@@ -13,6 +13,7 @@ You will be asked to enter:
 2) an image of the bill
 3) tip percentage
 
+<img width="500" alt="part 1" src="https://github.com/jjessicaf/bill-calculator/assets/53541136/56c62aed-71bb-4ccd-8248-2d8260e68a0c">
 
 
 The next page will ask you to assign the food items (editible name, price, quantity) to each person. Here you can: 
@@ -22,4 +23,9 @@ The next page will ask you to assign the food items (editible name, price, quant
 * assign the same item to as many people as you would like
 * items that are not selected are assigned to all individuals
 
+<img width="500" alt="part 2" src="https://github.com/jjessicaf/bill-calculator/assets/53541136/021b795b-fd85-4bbc-84b6-ce1cfb5593b9">
+
+
 Your result will then be calculated, and you can copy either individual totals (by clicking on them) or the entire results page using the share button. 
+
+<img width="825" alt="part 3" src="https://github.com/jjessicaf/bill-calculator/assets/53541136/b004d1da-91bd-46a6-b4fc-c9c61dc0ce87">
