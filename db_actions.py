@@ -20,7 +20,7 @@ def create():
         )
     ''')
 
-    conn.commit()  # don't forget to commit changes before continuing
+    conn.commit()  # commit changes before continuing
     conn.close()
 
 def remove_table(tb_name):
@@ -60,7 +60,6 @@ def upload_image(image_file):
 
     remove_table('images')
     create()
-    #data = image_file.read()
     img = Image.open(image_file)
 
     # Convert the image to bytes

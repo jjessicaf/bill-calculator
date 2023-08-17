@@ -18,7 +18,7 @@
                     </div>
                     <div class="container">
                         {% for key, value in items.items() %}
-                            <element class="box item"><input name="{{key}}" value="{{key}}" type="text"> ($ <input style="max-width: 75px" type="number" step="0.01" name="{{key ~ ' ' ~ value[1]}}" min="0.00" value="{{value[1]}}"> ) x <input style="max-width: 50px" type="number" name="{{key ~ ' ' ~ value[0]}}" min="0" max="100" value="{{value[0]}}"></element>
+                            <element class="box item" data-element-name="{{key}}"><input name="{{key}}" value="{{key}}" type="text"> ($ <input style="max-width: 75px" type="number" step="0.01" name="{{key ~ ' ' ~ value[1]}}" min="0.00" value="{{value[1]}}"> ) x <input style="max-width: 50px" type="number" name="{{key ~ ' ' ~ value[0]}}" min="0" max="100" value="{{value[0]}}"></element>
                         {% endfor %}
                     </div>
                     <div class="submit_container">

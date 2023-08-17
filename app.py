@@ -1,4 +1,4 @@
-# Jessica Fu
+# Jessica Fu @jjessicaf
 # Description: Calculates bill based on number of people and who has what items
 
 from flask import Flask, redirect, render_template, request, session, url_for
@@ -8,13 +8,10 @@ from collections import OrderedDict
 import re
 import db_actions
 import app_ocr
-from uvicorn.workers import UvicornWorker
 
 
-# web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app --log-file=-
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app_name = "Bill Calculator"
-# to store uploaded images
 
 nums = [i for i in range(11)] # up to 10 people
 items = OrderedDict() # item name : qty, price
@@ -70,15 +67,12 @@ def check_data():
         for i in range(session['num_people']):
             if ("name"+str(i)) in request.form:
                 session['names'].append(request.form["name" + str(i)].lower())
-        # reference: https://thinkinfi.com/upload-and-display-image-in-flask-python/
         received, tax = process_img(session['img_name'])
         if tax != "":
             session['tax'] = float(tax)
         if not received:
             print("invalid bill!")
             del session['img_name']
-            #del session['bill_img_path']
-            # say the bill is invalid
             return redirect(url_for('start'))
         return redirect(url_for('options'))
     return redirect(url_for('start'))
@@ -89,11 +83,9 @@ def options():
     choose who has which items
     :return: renders options.html
     """
-    # reference: https://web.dev/drag-and-drop/
     if not items:
         # error message
         return redirect(url_for('start'))
-    # for the jinja: https://stackoverflow.com/questions/25373154/how-to-iterate-through-a-list-of-dictionaries-in-jinja-template
 
     request_tax = False
     if 'tax' not in session:
@@ -145,7 +137,6 @@ def item_assigner():
 
                 if not success:
                     print(":(")
-                    # to-do: error handling
 
         session['assignment'] = assignment
         # items that aren't assigned are distributed amongst all participants
@@ -172,7 +163,6 @@ def item_assigner():
 
         if not success:
             print(":(")
-            # to-do: error handling
 
         session['assigned_items'] = assigned_items
 

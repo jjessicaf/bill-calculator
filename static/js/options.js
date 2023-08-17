@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   let assignment = {};
 
   function selectPerson(e) {
-    if (isActive) {
+    if (isActive) { // previously selected a person, de-select
       isActive.classList.remove('active');
       items.forEach(function (item) {
         item.classList.remove('active');
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     isActive = e.target;
     isActive.classList.add('active');
-    if (!(isActive.innerHTML in assignment)) {
+    if (!(isActive.innerHTML in assignment)) { // has not been assigned any items yet
       assignment[isActive.innerHTML] = [];
     }
-    else {
+    else { // already assigned other items
       items.forEach(function (item) {
-        if (assignment[isActive.innerHTML].includes(item.innerHTML)) {
+        if (assignment[isActive.innerHTML].includes(item.dataset.elementName)) {
           item.classList.add('active');
         }
       });
@@ -36,38 +36,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     let item = e.target;
-    let input1 = item.querySelector('input');
-    let id = isActive.getAttribute('name').substring(6);
-    console.log(id);
-    let elementToUpdate = document.getElementById(id);
+    let elementToUpdate = document.getElementById(isActive.innerHTML);
 
     // check if already assigned that item, this indicates a remove
-    if (assignment[isActive.innerHTML].includes(input1.name)) {
+    if (assignment[isActive.innerHTML].includes(item.dataset.elementName)) {
       //remove from assignment
-      let index = assignment[isActive.innerHTML].indexOf(input1.name);
+      let index = assignment[isActive.innerHTML].indexOf(item.dataset.elementName);
       if (index > -1) assignment[isActive.innerHTML].splice(index, 1);
 
       // remove from value of isActive
-      let substring = ", " + input1.name;
+      let substring = ", " + item.dataset.elementName;
       elementToUpdate.value = elementToUpdate.value.replace(substring, '');
 
       //remove active
       item.classList.remove('active');
     }
     else { // add item
-      elementToUpdate.value += ", " + input1.name;
-      assignment[isActive.innerHTML].push(input1.name);
+      elementToUpdate.value += ", " + item.dataset.elementName;
+      assignment[isActive.innerHTML].push(item.dataset.elementName);
       item.classList.add('active');
-      // console.log(isActive.innerHTML + ", " + input1.name);
     }
   }
 
-  let names = document.querySelectorAll('.name');
+  const names = document.querySelectorAll('.name');
   names.forEach(function (name) {
     name.addEventListener('click', selectPerson);
   });
 
-  let items = document.querySelectorAll('.item');
+  const items = document.querySelectorAll('.item');
   items.forEach(function (item) {
     item.addEventListener('click', updateItem);
   });

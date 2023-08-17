@@ -15,19 +15,12 @@ function resetTooltip(element) {
 }
 
 /*
-returns result page but without the buttons
+returns result page
  */
 function copyPage() {
     let currentUrl = window.location.href;
-    /* TO-DO: remove the buttons in the page rendered */
     let to_remove = ['removable'];
     let modifiedUrl = currentUrl;
-    console.log(modifiedUrl);
-    to_remove.forEach(function(item) {
-        let regex = new RegExp(item + '=\\d', 'g');
-        modifiedUrl = modifiedUrl.replace(item, '');
-        console.log(item + " " + modifiedUrl);
-    });
     let temp = document.createElement('input');
     temp.id = 'tempInput';
     temp.value = modifiedUrl;

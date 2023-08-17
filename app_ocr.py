@@ -12,22 +12,15 @@ def img_to_text(img_path):
     :return: text from image
     """
 
-    pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract' #'/opt/homebrew/bin/tesseract'
+    pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'
 
     img_data = db_actions.get_image(img_path)
-    print("type:", type(img_data[0]))
     # convert the image data to a NumPy array
     np_array = np.frombuffer(img_data[0], np.uint8)
-    print("type:", type(np_array))
     img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
-    print("type:", type(img))
 
     if img_data is None:
         return False, ""
-
-    print("checkpoint:")
-    print(img.shape)
-    print(img.dtype)
 
     # scale up if smaller
     if img.shape[1] < 900.0:
